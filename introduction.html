@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Introduction &mdash; Windchill Maven Setup 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nexiles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Windchill Maven Setup 0.1.0 documentation" href="index.html" />
+    <link rel="prev" title="Setup Windchill Development using Maven" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="introduction">
+<span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Stefan Eletzhofer, nexiles GmbH</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Date:</th><td class="field-body">July 03, 2015</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="problem-statement">
+<h2>Problem Statement<a class="headerlink" href="#problem-statement" title="Permalink to this headline">¶</a></h2>
+<p>The approach proposed by PTC to develop customizations for <a class="reference external" href="http://www.ptc.com/product-lifecycle-management/windchill">PTC Windchill</a> is quite involved and
+suggests putting class files directly into the code base of the Windchill server.  Moreover, development
+is assumed to happen <em>directly</em> on the server.</p>
+<p>This is suboptimal for obvious reasons:</p>
+<ul class="simple">
+<li>No clean separation between the code <a class="reference external" href="http://www.ptc.com">PTC</a> ships</li>
+<li>No versioning of Windchill dependencies, i.e. you&#8217;ve got what you&#8217;ve got installed on the server</li>
+<li>Developing on a server, i.e. each developer would need to have Windchill installed to even <em>compile</em> code</li>
+</ul>
+</div>
+<div class="section" id="goals">
+<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>We want to have a clean way to depend on <a class="reference external" href="http://www.ptc.com/product-lifecycle-management/windchill">PTC Windchill</a> dependencies for multiple versions</li>
+<li>We want to be able to build on our local development machines w/o need to have access to a Windchill
+server</li>
+<li>We want to document how to set up such a system</li>
+</ul>
+</div>
+<div class="section" id="about-nexiles">
+<h2>About nexiles<a class="headerlink" href="#about-nexiles" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://www.nexiles.com">nexiles</a> is a company based in Germany and Norway.  We develop tools and provide solutions for customers
+dealing with <a class="reference external" href="http://www.ptc.com/product-lifecycle-management/windchill">PTC Windchill</a>.  If you have any questions or comments, contact <a class="reference external" href="mailto:info&#37;&#52;&#48;nexiles&#46;com?subject=windchill%20maven%20setup%20request%20for%20information&amp;cc=se&#37;&#52;&#48;nexiles&#46;de">us</a>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/iconmonstr-gear-10-icon-128.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Introduction</a><ul>
+<li><a class="reference internal" href="#problem-statement">Problem Statement</a></li>
+<li><a class="reference internal" href="#goals">Goals</a></li>
+<li><a class="reference internal" href="#about-nexiles">About nexiles</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Setup Windchill Development using Maven</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/introduction.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, Stefan Eletzhofer, nexiles GmbH.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="_sources/introduction.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-64754146-1']);
+      _gaq.push(['_setDomainName', 'none']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    
+  </body>
+</html>

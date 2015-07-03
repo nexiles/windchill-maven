@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Setup &mdash; Windchill Maven Setup 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nexiles.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Windchill Maven Setup 0.1.0 documentation" href="index.html" />
+    <link rel="next" title="Change Log" href="changelog.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="setup">
+<span id="id1"></span><h1>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h2>
+<p>Here we show how to set up <a class="reference external" href="http://www.ptc.com/product-lifecycle-management/windchill">PTC Windchill</a> artifacts for <a class="reference external" href="https://maven.apache.org/">Maven</a> such that we later can depend on
+these artifacts in our projects.</p>
+<p>This is not a introduction to <a class="reference external" href="https://maven.apache.org/">maven</a>, please see the documentation on the <a class="reference external" href="https://maven.apache.org/">maven</a> website for more.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The instructions below are geared for a a development machine with unix-like tools but should
+work similar on Windows machines.</p>
+</div>
+</div>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>You need to have the needed tools installed:</p>
+<ul class="simple">
+<li>A JDK for Windchill development</li>
+<li>ant and maven</li>
+</ul>
+<p>On a Mac, this is done by:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ brew cask install java
+$ brew install ant maven
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-windchill-artifacts">
+<h2>Creating Windchill Artifacts<a class="headerlink" href="#creating-windchill-artifacts" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This step is a <strong>one time</strong> setup task.</p>
+</div>
+<p>To depend on <a class="reference external" href="http://www.ptc.com/product-lifecycle-management/windchill">PTC Windchill</a> code in our project, we need to create a <em>jar file</em> out of the code base found in
+Windchill.  We need to do this <em>once per Windchill version</em>.  Which versions we actually want to support is entirely
+up to you.  However, we need to use a <em>pristine</em> copy of Windchill, i.e. no custom code or extensions installed, or
+they&#8217;d too end up in the jar file.</p>
+<p>To be able to compile, we need to create these artifacts:</p>
+<ul class="simple">
+<li>The <em>codebase</em> &#8211; using ant to create a jar file from the Windchill code base</li>
+<li>The <em>annotations</em> &#8211; this is in <cite>$WT_HOME/srclib/tools/Annotations.jar</cite></li>
+<li>The <em>ie3rdpartylibs</em> &#8211; this is located at <cite>$WT_HOME/codebase/WEB-INF/lib/ie3rdpartylibs.jar</cite></li>
+</ul>
+<div class="section" id="windchill-version">
+<h3>Windchill Version<a class="headerlink" href="#windchill-version" title="Permalink to this headline">¶</a></h3>
+<p>You need to obtain the Windchill version to import the artifacts using the correct Windchill version.  This
+is done by issuing <cite>wndchill version</cite> in a windchill shell <strong>on the server</strong>.  A example output is below:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ windchill version
+      Timestamp: Juli 03, 2015 - 12:54:14 (GMT: 03.07.2015 10:54:14)
+
+      Support   Support                                  Installer
+      Datecode  Release Number  Release Id               Sequence   Display Label
+  --  --------  --------------  ---------------          ---------  ---------------------
+      F000      10.2            pdml.10.2.0.00.62        01         PTC Windchill PDMLink 10.2
+      M020      10.2            wsp.10.2.20.00.28        04         PTC Windchill 10.2 Service Pack
+      M020      10.2            whc.10.2.20.00.28        02         PTC Windchill 10.2 Help Center
+      M020      10.2            ie.10.2.20.00.28         01         PTC Windchill 10.2 Info*Engine
+      M020      10.2            commonpdm.10.2.20.00.28  03         PTC Windchill 10.2 Common Base
+      M020      10.2            wlp.10.2.20.00.28        01         PTC Windchill 10.2 MultiLanguage Pack
+      M020      10.2            wnc.10.2.20.00.28        05         PTC Windchill 10.2 Services
+
+  There are no patches installed.
+
+  Non-Default Locale Support:
+  Code  Name
+  ----  ----
+  de
+</pre></div>
+</div>
+<p>The version used below for this example would be <strong>10.2.0.00</strong>.</p>
+</div>
+<div class="section" id="preparing-artifacts">
+<h3>Preparing artifacts<a class="headerlink" href="#preparing-artifacts" title="Permalink to this headline">¶</a></h3>
+<p>So, to prepare the files for import into the <a class="reference external" href="https://maven.apache.org/">maven</a> repository, do:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ cd windchill-maven
+$ export WT_HOME=/Volumes/whereever-your-windchill-home-is
+$ ant makeCodebaseJar
+$ cp $WT_HOME/srclib/tools/Annotations.jar .
+$ cp $WT_HOME/codebase/WEB-INF/lib/ie3rdpartylibs.jar .
+</pre></div>
+</div>
+</div>
+<div class="section" id="import-the-artifacts-to-the-local-maven-repository">
+<h3>Import the artifacts to the <em>local</em> maven repository<a class="headerlink" href="#import-the-artifacts-to-the-local-maven-repository" title="Permalink to this headline">¶</a></h3>
+<p>To import the artifacts, do:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ cd windchill-maven
+$ export WTVERSION=10.2.0.00
+$ mvn install:install-file -Dfile=codebase.jar -DgroupId=com.ptc -DartifactId=codebase -Dversion=$WTVERSION -Dpackaging=jar -DgeneratePom=true -DcreateChecksum=true
+$ mvn install:install-file -Dfile=Annotations.jar -DgroupId=com.ptc -DartifactId=Annotations -Dversion=$WTVERSION -Dpackaging=jar -DgeneratePom=true -DcreateChecksum=true
+$ mvn install:install-file -Dfile=ie3rdpartylibs.jar -DgroupId=com.ptc -DartifactId=ie3rdpartylibs -Dversion=$WTVERSION -Dpackaging=jar -DgeneratePom=true -DcreateChecksum=true
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/iconmonstr-gear-10-icon-128.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Setup</a><ul>
+<li><a class="reference internal" href="#abstract">Abstract</a></li>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#creating-windchill-artifacts">Creating Windchill Artifacts</a><ul>
+<li><a class="reference internal" href="#windchill-version">Windchill Version</a></li>
+<li><a class="reference internal" href="#preparing-artifacts">Preparing artifacts</a></li>
+<li><a class="reference internal" href="#import-the-artifacts-to-the-local-maven-repository">Import the artifacts to the <em>local</em> maven repository</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="introduction.html" title="previous chapter">Introduction</a></li>
+      <li>Next: <a href="changelog.html" title="next chapter">Change Log</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/setup.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, Stefan Eletzhofer, nexiles GmbH.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="_sources/setup.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-64754146-1']);
+      _gaq.push(['_setDomainName', 'none']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    
+  </body>
+</html>
