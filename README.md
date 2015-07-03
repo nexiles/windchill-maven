@@ -1,4 +1,9 @@
-windchill
-=========
+Windchill Maven Setup
+=====================
 
-Tools and sample projects for windchill
+How to set up Windchill development using maven.
+
+Original Documentation
+======================
+
+http://www.ekito.fr/people/windchill-tips-building-project-maven/

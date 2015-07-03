@@ -1,4 +1,4 @@
-package fr.ekito.windchill.part.service;
+package com.nexiles.windchill.part.service;
 
 import org.junit.Assert;
 import org.junit.BeforeClass;

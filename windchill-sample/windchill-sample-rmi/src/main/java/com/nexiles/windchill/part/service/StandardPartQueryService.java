@@ -1,4 +1,4 @@
-package fr.ekito.windchill.part.service;
+package com.nexiles.windchill.part.service;
 
 import wt.fc.PersistenceHelper;
 import wt.fc.QueryResult;
@@ -13,7 +13,7 @@ public class StandardPartQueryService extends StandardManager implements
 		PartQueryService {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 

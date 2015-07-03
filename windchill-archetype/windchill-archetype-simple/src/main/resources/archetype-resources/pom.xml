@@ -11,7 +11,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>fr.ekito.windchill</groupId>
+			<groupId>com.nexiles.windchill</groupId>
 			<artifactId>windchill-commons-ant</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<classifier>windchill</classifier>
@@ -35,7 +35,7 @@
 				<configuration>
 					<artifactItems>
 						<artifactItem>
-							<groupId>fr.ekito.windchill</groupId>
+							<groupId>com.nexiles.windchill</groupId>
 							<artifactId>windchill-commons-ant</artifactId>
 							<version>0.0.1-SNAPSHOT</version>
 							<type>jar</type>

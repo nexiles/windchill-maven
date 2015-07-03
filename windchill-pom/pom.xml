@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>fr.ekito.windchill</groupId>
+	<groupId>com.nexiles.windchill</groupId>
 	<artifactId>windchill-pom</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
@@ -27,7 +27,7 @@
 		<dependencies>
 			<!-- windchill-commons-ant dependency -->
 			<dependency>
-				<groupId>fr.ekito.windchill</groupId>
+				<groupId>com.nexiles.windchill</groupId>
 				<artifactId>windchill-commons-ant</artifactId>
 				<version>${windchill-commons-ant.version}</version>
 			</dependency>
@@ -93,7 +93,7 @@
 					<configuration>
 						<artifactItems>
 							<artifactItem>
-								<groupId>fr.ekito.windchill</groupId>
+								<groupId>com.nexiles.windchill</groupId>
 								<artifactId>windchill-commons-ant</artifactId>
 								<version>${windchill-commons-ant.version}</version>
 								<type>jar</type>
@@ -205,7 +205,7 @@
 					</executions>
 				</plugin>
 
-				<!--This plugin's configuration is used to store Eclipse m2e settings 
+				<!--This plugin's configuration is used to store Eclipse m2e settings
 					only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>

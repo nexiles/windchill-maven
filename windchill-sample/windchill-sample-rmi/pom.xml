@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>fr.ekito.windchill</groupId>
+	<groupId>com.nexiles.windchill</groupId>
 	<artifactId>windchill-sample-rmi</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
@@ -20,19 +20,19 @@
 		<dependency>
 			<groupId>com.ptc</groupId>
 			<artifactId>codebase</artifactId>
-			<version>10.1.40.14</version>
+			<version>10.2.20.00</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.ptc</groupId>
 			<artifactId>Annotations</artifactId>
-			<version>10.1.40.14</version>
+			<version>10.2.20.00</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.ptc</groupId>
 			<artifactId>ie3rdpartylibs</artifactId>
-			<version>10.1.40.14</version>
+			<version>10.2.20.00</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -51,8 +51,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
 				<configuration>
-					<target>1.6</target>
-					<source>1.6</source>
+					<target>1.7</target>
+					<source>1.7</source>
 					<executable>${java.home}/bin/javac</executable>
 					<fork>fork</fork>
 				</configuration>

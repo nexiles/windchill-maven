@@ -5,7 +5,7 @@
 
 	<parent>
 		<artifactId>windchill</artifactId>
-		<groupId>fr.ekito.windchill</groupId>
+		<groupId>com.nexiles.windchill</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 

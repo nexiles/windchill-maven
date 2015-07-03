@@ -1,0 +1,17 @@
+<project name="windchill-sample-rmi" xmlns:antc="antlib:net.sf.antcontrib" basedir=".">
+
+	<property environment="env" />
+	<property name="wt.home" value="${env.WT_HOME}" />
+	<property name="wt.bin" value="${wt.home}${file.separator}bin" />
+	<property name="wt.codebase" value="${wt.home}${file.separator}codebase" />
+	<property name="wt.codebase.webinf" value="${wt.codebase}${file.separator}WEB-INF" />
+	<property name="wt.codebase.webinf.lib" value="${wt.codebase.webinf}${file.separator}lib" />
+
+	<target name="makeCodebaseJar" description="Create a jar of Windchill codebase to push in maven local repository">
+	    <jar destfile="build${file.separator}${env.WTVERSION}${file.separator}codebase.jar"
+	        basedir="${wt.codebase}"
+	        includes="**/*.class,**/*.ser"
+	    />
+	</target>
+
+</project>

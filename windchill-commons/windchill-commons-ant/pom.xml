@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<artifactId>windchill-commons</artifactId>
-		<groupId>fr.ekito.windchill</groupId>
+		<groupId>com.nexiles.windchill</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
