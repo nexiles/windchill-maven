@@ -61,11 +61,20 @@ def import_artifats(version):
 
 @task
 def build_docs():
-    print green("Making and pushing docs to GitHub ...")
+    print green("Building docs ...")
     with settings(hide("running", "stdout")):
         with lcd(docs_dir):
             local("make gh_pages")
+            local("make preview")
+
+
+@task
+def push_docs():
+    print green("Pushing docs to GitHub ...")
+    with settings(hide("running", "stdout")):
+        with lcd(docs_dir):
             local("make gh_pages_sync")
+
 
 @task
 def make(version):
