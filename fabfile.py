@@ -13,6 +13,7 @@ if not os.path.exists(WT_HOME):
 
 project_root    = os.path.dirname(__file__)
 build_dir       = os.path.join(project_root, "build")
+docs_dir        = os.path.join(project_root, "docs")
 
 GROUP_ID = "com.ptc"
 
@@ -57,6 +58,14 @@ def import_artifats(version):
                       "-DcreateChecksum=true".format(artifact=artifact, version=version, group_id=GROUP_ID)
                 local(cmd)
 
+
+@task
+def build_docs():
+    print green("Making and pushing docs to GitHub ...")
+    with settings(hide("running", "stdout")):
+        with lcd(docs_dir):
+            local("make gh_pages")
+            local("make gh_pages_sync")
 
 @task
 def make(version):
