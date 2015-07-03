@@ -64,6 +64,28 @@ $ brew install ant maven
 </pre></div>
 </div>
 </div>
+<div class="section" id="tl-dr">
+<h2>TL;DR<a class="headerlink" href="#tl-dr" title="Permalink to this headline">¶</a></h2>
+<p>On a Mac:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ cd windchill-maven
+$ virtualenv .
+$ . ./bin/activate
+$ . ./setenv.sh
+$ pip install -r requirements.txt
+$ fab make:version=MAJOR.MINOR.PATCH.FOO
+</pre></div>
+</div>
+<p>Where <cite>MAJOR.MINOR.PATCH.FOO</cite> is the actual Windchill version, e.g:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ fab make:version=10.2.20.00
+</pre></div>
+</div>
+<p>This currently creates and imports the artifacts.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">There&#8217;s much more included in this repo &#8211; most of I don&#8217;t understand yet.  Below is
+what I understood so far.  If you have any comments or help, please contact <a class="reference external" href="mailto:se&#37;&#52;&#48;nexiles&#46;de?subject=windchill%20maven%20setup%20comment">me</a>.</p>
+</div>
+</div>
 <div class="section" id="creating-windchill-artifacts">
 <h2>Creating Windchill Artifacts<a class="headerlink" href="#creating-windchill-artifacts" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
@@ -147,6 +169,7 @@ $ mvn install:install-file -Dfile=ie3rdpartylibs.jar -DgroupId=com.ptc -Dartifac
 <li><a class="reference internal" href="#">Setup</a><ul>
 <li><a class="reference internal" href="#abstract">Abstract</a></li>
 <li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#tl-dr">TL;DR</a></li>
 <li><a class="reference internal" href="#creating-windchill-artifacts">Creating Windchill Artifacts</a><ul>
 <li><a class="reference internal" href="#windchill-version">Windchill Version</a></li>
 <li><a class="reference internal" href="#preparing-artifacts">Preparing artifacts</a></li>

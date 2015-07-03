@@ -28,6 +28,27 @@ On a Mac, this is done by::
 	$ brew cask install java
 	$ brew install ant maven
 
+TL;DR
+=====
+
+On a Mac::
+
+	$ cd windchill-maven
+	$ virtualenv .
+	$ . ./bin/activate
+	$ . ./setenv.sh
+	$ pip install -r requirements.txt
+	$ fab make:version=MAJOR.MINOR.PATCH.FOO
+
+Where `MAJOR.MINOR.PATCH.FOO` is the actual Windchill version, e.g::
+
+	$ fab make:version=10.2.20.00
+
+This currently creates and imports the artifacts.
+
+.. note:: There's much more included in this repo -- most of I don't understand yet.  Below is
+   what I understood so far.  If you have any comments or help, please contact me_.
+
 
 Creating Windchill Artifacts
 ============================
@@ -101,6 +122,6 @@ To import the artifacts, do::
 .. _nexiles: 			http://www.nexiles.com
 .. _PTC: 				http://www.ptc.com
 .. _PTC Windchill: 		http://www.ptc.com/product-lifecycle-management/windchill
-.. _us: 				mailto:info@nexiles.com?subject=windchill%20maven%20setup%20request%20for%20information&cc=se@nexiles.de
+.. _me: 				mailto:se@nexiles.de?subject=windchill%20maven%20setup%20comment
 
 .. vim: set ft=rst tw=75 nocin nosi ai spell sw=4 ts=4 expandtab:
